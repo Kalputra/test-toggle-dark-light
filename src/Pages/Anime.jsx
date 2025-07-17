@@ -9,10 +9,11 @@ function Anime() {
     useState(null);
 
   const handleAnimeSelect = (animeId) => {
-    setSelectedAnimeIdFromSearch(animeId); // Update state dengan ID anime yang diklik
+    setSelectedAnimeIdFromSearch(animeId);
+    localStorage.setItem("last_view", animeId) // Update state dengan ID anime yang diklik
   };
 
-  const currentAnimeId = id || selectedAnimeIdFromSearch;
+  const currentAnimeId = id || selectedAnimeIdFromSearch || localStorage.getItem("last_view");
   return (
     <div style={{ padding: "20px", margin: "0 auto" }}>
       <h1>Halaman Anime</h1>
@@ -22,7 +23,7 @@ function Anime() {
       <AnimeSearch onAnimeSelect={handleAnimeSelect} />
 
       {/* {<AnimeDetail />} */}
-
+      <hr style={{ margin: "40px 0" }} />
       {currentAnimeId ? (
         <>
           <h2 style={{ textAlign: "center" }}>Detail Anime</h2>

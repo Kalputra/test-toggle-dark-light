@@ -1,9 +1,10 @@
 // src/Components/AnimeDetail.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Check  `animeId` diterima sebagai prop
 function AnimeDetail({ animeId }) {
+  const [lastView] = useState(localStorage.getItem("last_view") || null);
   const [anime, setAnime] = useState(null);
   const [loading, setLoading] = useState(true); // Default true
   const [error, setError] = useState(null);
@@ -15,10 +16,14 @@ function AnimeDetail({ animeId }) {
       return;
     }
 
+    console.log("Fetching details for anime ID:", animeId);
+
+    const id = animeId || lastView;
+
     setLoading(true);
     setError(null);
     axios
-      .get(`https://api.jikan.moe/v4/anime/${animeId}`)
+      .get(`https://api.jikan.moe/v4/anime/${id}`)
       .then((response) => {
         setAnime(response.data.data);
         setLoading(false);
@@ -28,7 +33,7 @@ function AnimeDetail({ animeId }) {
         setError(err);
         setLoading(false);
       });
-  }, [animeId]);
+  }, [animeId, lastView]);
 
   if (loading) return <div>Memuat detail anime...</div>;
   if (error)
@@ -57,6 +62,7 @@ function AnimeDetail({ animeId }) {
         border: "1px solid #ccc",
         padding: "15px",
         borderRadius: "10px",
+        boxShadow: "0 20px 18px rgba(120, 117, 117, 0.19)",
       }}
     >
       {/* Check `images` dan `webp` ada */}
@@ -66,7 +72,8 @@ function AnimeDetail({ animeId }) {
           alt={anime.title}
           style={{
             maxWidth: "300px",
-            boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+            boxShadow: "0 12px 8px #8c000044",
+            borderRadius: "18px",
           }}
         />
       )}
@@ -76,6 +83,7 @@ function AnimeDetail({ animeId }) {
           backgroundColor: "#353434ff",
           padding: "15px",
           borderRadius: "10px",
+          boxShadow: "0 4px 8px #000000ff",
         }}
       >
         <h2>{anime.title}</h2>

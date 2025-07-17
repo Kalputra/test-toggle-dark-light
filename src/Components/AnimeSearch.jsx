@@ -74,17 +74,21 @@ function AnimeSearch({ onAnimeSelect }) {
             style={{
               border: "1px solid #eee",
               padding: "10px",
-              borderRadius: "8px",
+              borderRadius: "12px",
               width: "180px",
               cursor: "pointer",
-              transition: "transform 0.2s",
+              transition: "transform 0.2s, background-color 0.2s",
               backgroundColor: "#201f1fff",
             }}
             onClick={() => onAnimeSelect(anime.mal_id)}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.transform = "scale(1.02)")
-            }
-            onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.02)";
+              e.currentTarget.style.backgroundColor = "#8c0000ff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+              e.currentTarget.style.backgroundColor = "#201f1fff";
+            }}
           >
             <img
               src={anime.images?.webp?.large_image_url}
@@ -94,6 +98,7 @@ function AnimeSearch({ onAnimeSelect }) {
                 height: "250px",
                 objectFit: "cover",
                 borderRadius: "20px",
+                boxShadow: " 0 8px 16px rgba(255, 255, 255, 0.1)",
               }}
             />
             <h4>{anime.title}</h4>
