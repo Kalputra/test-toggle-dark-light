@@ -1,4 +1,4 @@
-import MyForm from "../Components/FormTest";
+import FormTest from "../Components/FormTest";
 
 export default function Form() {
   return (
