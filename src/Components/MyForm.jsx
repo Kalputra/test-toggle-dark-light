@@ -9,9 +9,9 @@ export default function MyForm() {
     try {
       const response = await axios.post(
         "https://6878855f63f24f1fdc9e4466.mockapi.io/api/v1/users",
-        [data] // penting: dalam bentuk array
+        [data]
       );
-      console.log("Berhasil kirim ke Google Sheets:", response.data);
+      console.log("Berhasil kirim ke MockAPI", response.data);
       alert("Terkirim!");
       reset();
     } catch (err) {
