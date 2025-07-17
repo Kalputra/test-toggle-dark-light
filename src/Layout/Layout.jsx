@@ -16,6 +16,9 @@ export default function Layout() {
             <a href="/Anime">Anime</a>
           </li>
           <li>
+            <a href="/Form">Form</a>
+          </li>
+          <li>
             <a href="/page2">Page 2</a>
           </li>
           <li>
