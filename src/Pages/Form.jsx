@@ -1,10 +1,9 @@
-import MyForm from "../Components/MyForm";
+import MyForm from "../Components/FormTest";
 
 export default function Form() {
-
   return (
     <div>
-    <MyForm />
+      <FormTest />
     </div>
   );
 }

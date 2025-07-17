@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-export default function MyForm() {
+export default function FormTest() {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
